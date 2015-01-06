@@ -1,3 +1,5 @@
+scripts/lc.config
+.idea
 historical_data
 scripts/api.key
 *.ipynb
