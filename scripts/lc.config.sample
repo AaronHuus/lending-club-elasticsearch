@@ -1,3 +1,4 @@
 [Lending Club]
 api.key = XXXXXXsdfXX
-account = 123456
+account.number = 123456
+account.name = My Account Name

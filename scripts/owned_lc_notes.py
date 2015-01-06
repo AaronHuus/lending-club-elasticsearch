@@ -8,7 +8,8 @@ import ConfigParser
 config = ConfigParser.RawConfigParser()
 config.read('lc.config')
 api_key = config.get("Lending Club","api.key")
-account_number = config.get("Lending Club","account")
+account_number = config.get("Lending Club","account.number")
+account_nickname = config.get("Lending Club","account.name")
 
 # Removing previous in funding loans from elastic search
 print("Deleting previous owned loans from elasticsearch ...")
@@ -26,6 +27,7 @@ owned_notes = json.load(response)
 print("Adding in funding loans to elastic search ...")
 for loan in owned_notes['myNotes']:
     loan['injestedDate'] = datetime.now()
+    loan ['accountNickname'] = account_nickname
     es.index(index='lending_club', doc_type="owned_note", body=loan)
 
 print ("Done injesting currently owned Lending Club notes!")

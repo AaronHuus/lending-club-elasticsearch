@@ -8,7 +8,6 @@ import ConfigParser
 config = ConfigParser.RawConfigParser()
 config.read('lc.config')
 api_key = config.get("Lending Club","api.key")
-account_number = config.get("Lending Club","account")
 
 # Removing previous in funding loans from elastic search
 print("Deleting previous in funding loans from elasticsearch ...")
